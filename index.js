@@ -26,16 +26,13 @@ app.post('/identify', upload.single('image'), async (req, res) => {
 });
 
 app.post('/ebay-data', async (req, res) => {
-  try {
-    const { title } = req.body || {};
-    if (!title || typeof title !== 'string') return res.status(400).json({ error: 'Missing title' });
-    const data = await getEbayMetrics(title);
-    res.json(data);
-  } catch (err) {
-    console.error('EBAY ERROR', err);
-    res.status(500).json({ error: 'eBay lookup failed', details: String(err) });
-  }
+  res.json({
+    avgPrice: 0,
+    soldCount: 0,
+    activeCount: 0,
+    sellThroughRate: 0,
+    maxBuyCost: 0
+  });
 });
-
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log('Jeff backend running on port', PORT));
