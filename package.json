@@ -6,6 +6,7 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "tesseract.js": "^5.0.5"
     "@google-cloud/vision": "^4.3.0",
     "axios": "^1.7.0",
     "cors": "^2.8.5",
